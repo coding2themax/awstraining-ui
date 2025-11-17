@@ -1,65 +1,105 @@
-import Image from "next/image";
+import AcmeLogo from '@/app/ui/acme-logo';
+import { ArrowForward } from '@mui/icons-material';
+import { Box, Container, Typography, Button, Paper } from '@mui/material';
+import Link from '@/src/components/Link';
 
-export default function Home() {
+export default function Page() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <Box
+      component="main"
+      sx={{
+        display: 'flex',
+        minHeight: '100vh',
+        flexDirection: 'column',
+        p: 3,
+      }}
+    >
+      <Paper
+        elevation={0}
+        sx={{
+          display: 'flex',
+          height: { xs: 80, md: 208 },
+          flexShrink: 0,
+          alignItems: 'flex-end',
+          borderRadius: 2,
+          bgcolor: 'primary.main',
+          p: 2,
+        }}
+      >
+        {/* <AcmeLogo /> */}
+      </Paper>
+      <Box
+        sx={{
+          mt: 2,
+          display: 'flex',
+          flexGrow: 1,
+          flexDirection: { xs: 'column', md: 'row' },
+          gap: 2,
+        }}
+      >
+        <Paper
+          elevation={1}
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            gap: 3,
+            borderRadius: 2,
+            bgcolor: 'background.paper',
+            px: { xs: 3, md: 10 },
+            py: 5,
+            width: { xs: '100%', md: '40%' },
+          }}
+        >
+          <Typography
+            variant="h4"
+            component="p"
+            sx={{
+              fontSize: { xs: '1.25rem', md: '1.875rem' },
+              lineHeight: { xs: 1.75, md: 1.5 },
+              color: 'text.primary',
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <strong>Welcome to Acme.</strong> This is the example for the{' '}
+            <Link
+              href="https://nextjs.org/learn/"
+              style={{ color: '#3b82f6', textDecoration: 'none' }}
+            >
+              Next.js Learn Course
+            </Link>
+            , brought to you by Vercel.
+          </Typography>
+          <Button
+            component={Link}
+            href="/login"
+            variant="contained"
+            endIcon={<ArrowForward />}
+            sx={{
+              alignSelf: 'flex-start',
+              textTransform: 'none',
+              fontSize: { xs: '0.875rem', md: '1rem' },
+              '&:hover': {
+                bgcolor: 'primary.light',
+              },
+            }}
           >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            Log in
+          </Button>
+        </Paper>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            p: 3,
+            width: { xs: '100%', md: '60%' },
+            px: { md: 14 },
+            py: { md: 6 },
+          }}
+        >
+          {/* Add Hero Images Here */}
+        </Box>
+      </Box>
+    </Box>
   );
 }
